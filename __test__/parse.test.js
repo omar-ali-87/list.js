@@ -1,5 +1,5 @@
 const $ = require('jquery'),
-  List = require('../src/index')
+  List = require('../src/index').default
 
 describe('Parse', function () {
   describe('Parse class', function () {

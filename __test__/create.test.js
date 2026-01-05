@@ -1,5 +1,5 @@
-const $ = require('jquery'),
-  List = require('../src/index')
+const $ = require('jquery')
+const List = require('../src/index').default.default
 
 describe('Create', function () {
   describe('With HTML items', function () {
