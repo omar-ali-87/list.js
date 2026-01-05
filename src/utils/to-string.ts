@@ -4,4 +4,3 @@ export default function toString(s: any): string {
   s = s.toString()
   return s
 }
-

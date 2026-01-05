@@ -7,9 +7,7 @@ export default function extend<T extends Record<string, any>>(
   ...sources: Array<Record<string, any> | null | undefined>
 ): T {
   // Takes an unlimited number of extenders.
-  const args = Array.prototype.slice.call(arguments, 1) as Array<
-    Record<string, any> | null | undefined
-  >
+  const args = Array.prototype.slice.call(arguments, 1) as Array<Record<string, any> | null | undefined>
 
   // For each extender, copy their properties on our object.
   for (let i = 0; i < args.length; i++) {
@@ -24,4 +22,3 @@ export default function extend<T extends Record<string, any>>(
 
   return object
 }
-
