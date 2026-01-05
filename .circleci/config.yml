@@ -12,8 +12,15 @@ jobs:
         type: string
     steps:
       - checkout
-      - node/install-packages
-      - run: npm test
+      - run:
+          name: Install pnpm
+          command: npm install -g pnpm
+      - run:
+          name: Install dependencies
+          command: pnpm install
+      - run:
+          name: Run tests
+          command: pnpm test
       - run:
           name: code-coverage
           command: 'bash <(curl -s https://codecov.io/bash)'

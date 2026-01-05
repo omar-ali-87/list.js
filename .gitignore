@@ -5,3 +5,4 @@ docs/.sass-cache
 docs/.jekyll-metadata
 coverage
 docs/vendor
+package-lock.json
