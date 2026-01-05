@@ -1,5 +1,19 @@
 # Changelog
 
+### 3.0.0 - 2025-01-05 - TypeScript Migration 🚀
+
+- **[Breaking]** Migrate to TypeScript with full type support
+- **[Breaking]** Drop support for IE9 and older browsers (now ES2020+)
+- **[Breaking]** Change module system from CommonJS to ES modules
+- **[Feature]** Add TypeScript type definitions for all APIs
+- **[Feature]** Migrate build system from Webpack to Vite
+- **[Feature]** Migrate package management from npm to pnpm
+- **[Improvement]** Modernize codebase with ES6 classes and modern JavaScript
+- **[Improvement]** Add source maps and declaration files
+- **[Misc]** Update Node.js requirement to 14+
+- **[Misc]** Remove Babel and Webpack dependencies
+- **[Misc]** Update Jest to v29 with TypeScript support
+
 ### 2.3.1 - 2021-01-17
 
 - - **[Improvement]** #708 Support restored for Node 6, 8, 10 and 12.
