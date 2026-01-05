@@ -14,8 +14,6 @@ const re = /\s+/
  * toString reference.
  */
 
-const toString = Object.prototype.toString
-
 /**
  * Wrap `el` in a `ClassList`.
  *
@@ -169,13 +167,12 @@ class ClassList {
    * @api public
    */
 
-  has(name: string): boolean
-  contains(name: string): boolean
   has(name: string): boolean {
     return this.list ? this.list.contains(name) : indexOf(this.array(), name) !== -1
   }
+  
+  contains(name: string): boolean {
+    return this.has(name)
+  }
 }
-
-// Alias
-ClassList.prototype.contains = ClassList.prototype.has
 

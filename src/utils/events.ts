@@ -1,8 +1,8 @@
 import toArray from './to-array'
 
-const bind = window.addEventListener ? 'addEventListener' : 'attachEvent'
-const unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent'
-const prefix = bind !== 'addEventListener' ? 'on' : ''
+const bindMethod: 'addEventListener' | 'attachEvent' = typeof window.addEventListener === 'function' ? 'addEventListener' : 'attachEvent'
+const unbindMethod: 'removeEventListener' | 'detachEvent' = typeof window.removeEventListener === 'function' ? 'removeEventListener' : 'detachEvent'
+const prefix = bindMethod !== 'addEventListener' ? 'on' : ''
 
 /**
  * Bind `el` event `type` to `fn`.
@@ -22,7 +22,7 @@ export function bind(
 ): void {
   const elements = toArray<Element>(el)
   for (let i = 0, il = elements.length; i < il; i++) {
-    ;(elements[i] as any)[bind](prefix + type, fn, capture || false)
+    ;(elements[i] as any)[bindMethod](prefix + type, fn, capture || false)
   }
 }
 
@@ -44,7 +44,7 @@ export function unbind(
 ): void {
   const elements = toArray<Element>(el)
   for (let i = 0, il = elements.length; i < il; i++) {
-    ;(elements[i] as any)[unbind](prefix + type, fn, capture || false)
+    ;(elements[i] as any)[unbindMethod](prefix + type, fn, capture || false)
   }
 }
 

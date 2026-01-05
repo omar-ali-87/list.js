@@ -73,7 +73,7 @@ class Templater {
           elm.setAttribute(valueName.attr, '')
         }
       } else {
-        const className = typeof valueName === 'string' ? valueName : valueName.name
+        const className = typeof valueName === 'string' ? valueName : (valueName as { name: string }).name
         elm = getByClass(el, className, true) as HTMLElement | undefined
         if (elm) {
           elm.innerHTML = ''
@@ -152,11 +152,11 @@ class Templater {
         elm.setAttribute(valueName.attr, String(value))
       }
     } else {
-      const className = typeof valueName === 'string' ? valueName : valueName.name
-      elm = getByClass(item.elm, className, true) as HTMLElement | undefined
-      if (elm) {
-        elm.innerHTML = String(value)
-      }
+        const className = typeof valueName === 'string' ? valueName : (valueName as { name: string }).name
+        elm = getByClass(item.elm, className, true) as HTMLElement | undefined
+        if (elm) {
+          elm.innerHTML = String(value)
+        }
     }
   }
 
@@ -186,7 +186,7 @@ class Templater {
           ? getAttribute(elm, valueName.attr)
           : ''
       } else {
-        const className = typeof valueName === 'string' ? valueName : valueName.name
+        const className = typeof valueName === 'string' ? valueName : (valueName as { name: string }).name
         elm = getByClass(item.elm, className, true) as HTMLElement | undefined
         values[className] = elm ? elm.innerHTML : ''
       }
@@ -216,7 +216,7 @@ class Templater {
     return true
   }
 
-  remove(item: ListItem, options?: any): void {
+  remove(item: ListItem, _options?: any): void {
     if (item.elm && item.elm.parentNode === this.list.list) {
       this.list.list.removeChild(item.elm)
     }

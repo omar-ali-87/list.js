@@ -49,9 +49,9 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/list.js",
-      "require": "./dist/list.min.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/list.min.js"
     }
   },
   "engines": {
@@ -59,7 +59,7 @@
   },
   "scripts": {
     "test": "pnpm exec jest",
-    "build": "vite build",
+    "build": "vite build && vite build --mode minified",
     "watch": "vite build --watch",
     "watch-test": "pnpm exec jest --watch",
     "preversion": "pnpm test && pnpm run build && cp dist/list.min.js docs/assets/javascripts/list.min.js && cp dist/list.min.js.map docs/assets/javascripts/list.min.js.map && cp dist/list.js docs/assets/javascripts/list.js && cp dist/list.js.map docs/assets/javascripts/list.js.map && git add dist && git add docs/assets/javascripts",

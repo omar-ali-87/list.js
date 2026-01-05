@@ -6,7 +6,7 @@ import { readFileSync } from 'fs'
 const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'))
 const banner = `/*! List.js v${packageJson.version} */`
 
-// Unminified UMD build
+// Build unminified version
 const unminifiedConfig = defineConfig({
   plugins: [
     dts({
@@ -32,7 +32,7 @@ const unminifiedConfig = defineConfig({
   },
 })
 
-// Minified UMD build
+// Build minified version
 const minifiedConfig = defineConfig({
   build: {
     lib: {
@@ -56,4 +56,12 @@ const minifiedConfig = defineConfig({
   },
 })
 
-export default [unminifiedConfig, minifiedConfig]
+// Export function that returns config based on mode
+export default defineConfig(({ mode }) => {
+  // Build minified version when mode is 'minified'
+  if (mode === 'minified') {
+    return minifiedConfig
+  }
+  // Otherwise build unminified version
+  return unminifiedConfig
+})
