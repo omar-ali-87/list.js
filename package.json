@@ -44,16 +44,25 @@
     "webpack": "^5.6.0",
     "webpack-cli": "^4.2.0"
   },
-  "main": "src/index",
+  "main": "./dist/list.js",
+  "module": "./dist/list.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/list.js",
+      "require": "./dist/list.min.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "engines": {
-    "node": "^6.0 || ^8.0 || ^10.0 || ^12.0 || >=14"
+    "node": ">=14"
   },
   "scripts": {
     "test": "pnpm exec jest",
     "build": "vite build",
     "watch": "vite build --watch",
     "watch-test": "pnpm exec jest --watch",
-    "preversion": "pnpm test && pnpm run build && cp dist/list.min.js docs/assets/javascripts/list.min.js && cp dist/list.min.js.map docs/assets/javascripts/list.min.js.map && git add dist && git add docs/assets/javascripts",
+    "preversion": "pnpm test && pnpm run build && cp dist/list.min.js docs/assets/javascripts/list.min.js && cp dist/list.min.js.map docs/assets/javascripts/list.min.js.map && cp dist/list.js docs/assets/javascripts/list.js && cp dist/list.js.map docs/assets/javascripts/list.js.map && git add dist && git add docs/assets/javascripts",
     "postversion": "git push --follow-tags origin master && cp package.json docs/_data/pkg.json && git add docs/_data/pkg.json && git commit -m \"pkg.json update\""
   },
   "npmName": "list.js",
