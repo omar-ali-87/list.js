@@ -7,15 +7,7 @@ import toString from './utils/to-string'
 import classes from './utils/classes'
 import getAttribute from './utils/get-attribute'
 import toArray from './utils/to-array'
-import type {
-  ListOptions,
-  ListItem,
-  ListItemValues,
-  ValueName,
-  EventHandler,
-  FilterFunction,
-  CustomSearchFunction,
-} from './types'
+import type { ListOptions, ListItem, ListItemValues, ValueName, EventHandler } from './types'
 
 // Dynamic imports for modules that will be converted
 let createItem: any
@@ -85,11 +77,7 @@ export default class List {
     },
   }
 
-  constructor(
-    id: string | HTMLElement,
-    options: ListOptions = {},
-    values?: ListItemValues | ListItemValues[]
-  ) {
+  constructor(id: string | HTMLElement, options: ListOptions = {}, values?: ListItemValues | ListItemValues[]) {
     // Lazy load modules to avoid circular dependencies
     if (!createItem) {
       createItem = require('./item').default
@@ -122,17 +110,12 @@ export default class List {
     this.init(id, options, values)
   }
 
-  private init(
-    id: string | HTMLElement,
-    options: ListOptions,
-    values?: ListItemValues | ListItemValues[]
-  ): void {
+  private init(id: string | HTMLElement, options: ListOptions, values?: ListItemValues | ListItemValues[]): void {
     // Extend this instance with options
     this.utils.extend(this, options)
 
     // Get container element
-    this.listContainer =
-      typeof id === 'string' ? document.getElementById(id)! : id
+    this.listContainer = typeof id === 'string' ? document.getElementById(id)! : id
     if (!this.listContainer) {
       return
     }
@@ -145,8 +128,6 @@ export default class List {
     this.list = listEl as HTMLElement
 
     // Initialize modules
-    const Item = createItem(this)
-    const addAsync = createAddAsync(this)
     const initPagination = createPagination(this)
 
     this.parse = createParse(this)
@@ -175,10 +156,7 @@ export default class List {
 
   private setupHandlers(options: ListOptions): void {
     for (const handler in this.handlers) {
-      if (
-        (options as any)[handler] &&
-        Object.prototype.hasOwnProperty.call(this.handlers, handler)
-      ) {
+      if ((options as any)[handler] && Object.prototype.hasOwnProperty.call(this.handlers, handler)) {
         this.on(handler, (options as any)[handler])
       }
     }
@@ -229,10 +207,7 @@ export default class List {
   /**
    * Add object to list
    */
-  add(
-    values: ListItemValues | ListItemValues[],
-    callback?: (items: ListItem[]) => void
-  ): ListItem[] | void {
+  add(values: ListItemValues | ListItemValues[], callback?: (items: ListItem[]) => void): ListItem[] | void {
     const valuesArray = Array.isArray(values) ? values : [values]
 
     if (valuesArray.length === 0) {
@@ -371,11 +346,7 @@ export default class List {
     this.templater.clear()
 
     for (let i = 0; i < il; i++) {
-      if (
-        is[i].matching() &&
-        this.matchingItems.length + 1 >= this.i &&
-        this.visibleItems.length < this.page
-      ) {
+      if (is[i].matching() && this.matchingItems.length + 1 >= this.i && this.visibleItems.length < this.page) {
         is[i].show()
         this.visibleItems.push(is[i])
         this.matchingItems.push(is[i])
@@ -394,4 +365,3 @@ export default class List {
 
 // Export types
 export type { ListOptions, ListItem, ListItemValues, ValueName } from './types'
-

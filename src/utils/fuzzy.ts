@@ -4,11 +4,7 @@ interface FuzzyOptions {
   threshold?: number
 }
 
-export default function (
-  text: string,
-  pattern: string,
-  options: FuzzyOptions = {}
-): boolean {
+export default function (text: string, pattern: string, options: FuzzyOptions = {}): boolean {
   // Approximately where in the text is the pattern expected to be found?
   const Match_Location = options.location || 0
 
@@ -101,10 +97,7 @@ export default function (
         rd[j] = ((rd[j + 1] << 1) | 1) & charMatch
       } else {
         // Subsequent passes: fuzzy match.
-        rd[j] =
-          (((rd[j + 1] << 1) | 1) & charMatch) |
-          (((last_rd![j + 1] | last_rd![j]) << 1) | 1) |
-          last_rd![j + 1]
+        rd[j] = (((rd[j + 1] << 1) | 1) & charMatch) | (((last_rd![j + 1] | last_rd![j]) << 1) | 1) | last_rd![j + 1]
       }
       if (rd[j] & matchmask) {
         const score = match_bitapScore_(d, j - 1)
@@ -133,4 +126,3 @@ export default function (
 
   return best_loc >= 0
 }
-

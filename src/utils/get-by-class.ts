@@ -12,7 +12,7 @@
  * @api public
  */
 
-interface GetByClassOptions {
+export interface GetByClassOptions {
   test?: {
     getElementsByClassName?: boolean
     querySelector?: boolean
@@ -76,19 +76,12 @@ export default (function () {
     options?: GetByClassOptions
   ): HTMLElement | HTMLElement[] | undefined {
     options = options || {}
-    if (
-      (options.test && options.test.getElementsByClassName) ||
-      (!options.test && document.getElementsByClassName)
-    ) {
+    if ((options.test && options.test.getElementsByClassName) || (!options.test && document.getElementsByClassName)) {
       return getElementsByClassName(container, className, single || false)
-    } else if (
-      (options.test && options.test.querySelector) ||
-      (!options.test && document.querySelector)
-    ) {
+    } else if ((options.test && options.test.querySelector) || (!options.test && document.querySelector)) {
       return querySelector(container, className, single || false)
     } else {
       return polyfill(container, className, single || false)
     }
   }
 })()
-

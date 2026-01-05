@@ -21,6 +21,9 @@ importers:
       '@types/node':
         specifier: ^25.0.3
         version: 25.0.3
+      '@types/string-natural-compare':
+        specifier: ^3.0.4
+        version: 3.0.4
       babel-loader:
         specifier: ^8.2.1
         version: 8.4.1(@babel/core@7.28.5)(webpack@5.104.1)
@@ -1105,6 +1108,9 @@ packages:
 
   '@types/stack-utils@2.0.3':
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
+
+  '@types/string-natural-compare@3.0.4':
+    resolution: {integrity: sha512-M7TwoIEvNr7Go1CUdp8qjOEWwwYPOHq4N4IlWX+735eJDk3qFfwfUS8WAod0qnViRB+ig0v+eXyxr6zaqKJmhg==}
 
   '@types/yargs-parser@21.0.3':
     resolution: {integrity: sha512-I4q9QU9MQv4oEOz4tAHJtNz1cwuLxn2F3xcc2iV5WdqLPpUnj30aUuxt1mAxYTG+oe8CZMV/+6rU4S4gRDzqtQ==}
@@ -4508,6 +4514,8 @@ snapshots:
   '@types/prettier@2.7.3': {}
 
   '@types/stack-utils@2.0.3': {}
+
+  '@types/string-natural-compare@3.0.4': {}
 
   '@types/yargs-parser@21.0.3': {}
 

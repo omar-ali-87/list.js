@@ -11,11 +11,7 @@ export default function createItem(list: List) {
       this.init(initValues, element, notCreate)
     }
 
-    private init(
-      initValues?: ListItemValues,
-      element?: HTMLElement,
-      notCreate?: boolean
-    ): void {
+    private init(initValues?: ListItemValues, element?: HTMLElement, notCreate?: boolean): void {
       if (element === undefined) {
         if (notCreate) {
           this.values(initValues, notCreate)
@@ -66,4 +62,3 @@ export default function createItem(list: List) {
     }
   }
 }
-

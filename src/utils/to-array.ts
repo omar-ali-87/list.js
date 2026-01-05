@@ -20,19 +20,14 @@ export default function toArray<T>(collection: any): T[] {
   if (typeof collection === 'string') return [collection as any]
   if (isArray(collection)) return collection as T[]
   if (typeof collection.length !== 'number') return [collection]
-  if (typeof collection === 'function' && collection instanceof Function)
-    return [collection as any]
+  if (typeof collection === 'function' && collection instanceof Function) return [collection as any]
 
   const arr: T[] = []
   for (let i = 0, il = collection.length; i < il; i++) {
-    if (
-      Object.prototype.hasOwnProperty.call(collection, i) ||
-      i in collection
-    ) {
+    if (Object.prototype.hasOwnProperty.call(collection, i) || i in collection) {
       arr.push(collection[i])
     }
   }
   if (!arr.length) return []
   return arr
 }
-
